@@ -2,6 +2,11 @@ const usernameInput = document.getElementById('username');
 const searchBtn = document.getElementById("search");
 
 searchBtn.addEventListener("click", handleSearch);
+usernameInput.addEventListener("keyup", function(event){
+    if(event.key === "Enter"){
+        handleSearch();
+    }
+})
 
 async function handleSearch(){
     const username = usernameInput.value.trim();
@@ -35,7 +40,7 @@ function displayUserInfo(user){
     const userInfoSection = document.getElementById('user-info');
     userInfoSection.innerHTML = `
         <h2>${user.name}</h2>
-        <img src="${user.avatar_url}">
+        <img src="${user.avatar_url}" width="150">
         <p>Bio: ${user.bio}</p>
         <p>Followers: ${user.followers} / Following: ${user.following}</p>
         <p>Public Repositories count: ${user.public_repos}</p>
